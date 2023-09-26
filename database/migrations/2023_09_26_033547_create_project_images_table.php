@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('project_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Project::class)->references('id')->on('project');
+            $table->foreignIdFor(Project::class)->references('id')->on('projects');
             $table->string('path');
             $table->timestamps();
         });
