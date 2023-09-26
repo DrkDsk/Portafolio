@@ -25,7 +25,10 @@ class ProjectController extends Controller
 
     public function create(): Response
     {
-        return Inertia::render('Project/Create');
+        return Inertia::render('Project/Create', [
+            'technologies'    => $this->projectRepository->getTechnologies(),
+            'typesOfProjects' => $this->projectRepository->getTypesOfProject()
+        ]);
     }
 
     public function store(StoreProjectRequest $request): ProjectResource

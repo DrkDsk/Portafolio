@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Models\Project;
+use App\Models\ProjectType;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,6 +14,16 @@ class ProjectRepository
     public function getProjects(): Collection | array
     {
         return Project::with('projectImages')->get();
+    }
+
+    public function getTechnologies(): Collection
+    {
+        return Technology::all();
+    }
+
+    public function getTypesOfProject(): Collection
+    {
+        return ProjectType::all();
     }
 
     public function myInfo(): array
