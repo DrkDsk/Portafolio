@@ -15,7 +15,7 @@ let props = defineProps({
 <template>
     <Header>
         <Landing :my-info="myInfo"></Landing>
-        <LandingProjects :projects="projects"></LandingProjects>
+        <LandingProjects id="projects" :projects="projects"></LandingProjects>
     </Header>
 </template>
 
