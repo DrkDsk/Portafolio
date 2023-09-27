@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('github_link')->nullable();
             $table->string('creation_year');
             $table->integer('creation_month');
             $table->foreignIdFor(ProjectType::class)->references('id')->on('project_types');

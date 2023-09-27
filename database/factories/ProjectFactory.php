@@ -20,6 +20,7 @@ class ProjectFactory extends Factory
         return [
             'name'            => $this->faker->name,
             'description'     => $this->faker->paragraph(rand(2,4)),
+            'github_link'     => $this->faker->url,
             'creation_year'   => strval(rand(2020,2023)),
             'creation_month'  => $this->faker->numberBetween(01,12),
             'project_type_id' => rand(1,3)

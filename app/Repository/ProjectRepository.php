@@ -11,7 +11,7 @@ class ProjectRepository
 {
     public function getProjects(): Collection | array
     {
-        return Project::with('projectImages')->orderBy('created_at', 'DESC')->get();
+        return Project::with('projectImages', 'projectType')->orderBy('created_at', 'DESC')->get();
     }
 
     public function getTechnologies(): Collection
@@ -37,6 +37,7 @@ class ProjectRepository
         return Project::create([
             'name'            => $data['name'],
             'description'     => $data['description'],
+            'github_link'     => request()->github,
             'creation_year'   => $data['creation_year'],
             'creation_month'  => $data['creation_month'],
             'project_type_id' => $data['type']
