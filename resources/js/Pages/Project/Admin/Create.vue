@@ -4,7 +4,7 @@ import {useForm} from "@inertiajs/vue3";
 import {readonly} from "vue";
 import Multiselect from '@vueform/multiselect';
 import Header from "@/Layouts/LandingPage/Header.vue";
-import { monthsArray }  from '@/Constants.js'
+import { monthsArray, firstYearOfCreationProject }  from '@/Constants.js'
 
 let props = defineProps({
     technologies: Object,
@@ -25,7 +25,7 @@ const optionsTechnologies = [];
 const selectYearsOfCreation = []
 const selectMonthsOfCreation = monthsArray
 
-for (let i= 2000; i<=new Date().getFullYear(); i++) {
+for (let i= firstYearOfCreationProject; i<=new Date().getFullYear(); i++) {
     selectYearsOfCreation.push(i)
 }
 
@@ -77,9 +77,9 @@ const submitForm = () => {
                         </div>
 
                         <label for="type" class="text-gray-700 mt-1 mt-5 mb-1">Tipo</label>
-                        <select v-model="formProject.type" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none">
+                        <select v-model="formProject.type" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none capitalize">
                             <option :value="null" disabled>Selecciona una opción</option>
-                            <option class="capitalize" v-for="typeOfProject of typesOfProjects" :value="typeOfProject.id">{{typeOfProject.name}}</option>
+                            <option v-for="typeOfProject of typesOfProjects" :value="typeOfProject.id">{{typeOfProject.name}}</option>
                         </select>
 
                         <label for="type" class="text-gray-700 mt-1 mt-5 mb-1">Imágenes</label>

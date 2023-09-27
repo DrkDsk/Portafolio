@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::group(['middleware' => ['role:administrador']], function () {
-    Route::resource('projects', ProjectController::class)->only(['store', 'create']);
+Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
+    Route::resource('projects', AdminProjectController::class)->only(['index','store', 'create']);
 });
 
 Route::middleware('auth')->group(function () {

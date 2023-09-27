@@ -24,7 +24,9 @@ class StoreProjectRequest extends FormRequest
             'creation_year' => ['required', 'integer'],
             'creation_month' => ['required', 'integer'],
             'technologies'   => ['required'],
-            'type' => ['required']
+            'type' => ['required'],
+            'images' => ['required', 'array'],
+            'images.*' => ['required', 'image','mimes:jpeg,png,jpg','max:3000']
         ];
     }
 }
