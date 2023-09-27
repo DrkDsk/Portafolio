@@ -49,6 +49,9 @@ export const monthsArray = [
     },
 ]
 
+export const firstYearOfCreationProject = 2016
+
 export default {
-    monthsArray
+    monthsArray,
+    firstYearOfCreationProject
 }
