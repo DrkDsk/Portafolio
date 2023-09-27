@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Project;
+use App\Models\ProjectType;
+use App\Models\Technology;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +22,17 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $technologies = ['PHP', 'Vue', 'Laravel', 'Angular', 'Tailwind css'];
+        foreach ($technologies as $technology) {
+            Technology::create(['name' => $technology]);
+        }
+
+        $projectTypes = ['frontend', 'backend', 'full stack'];
+        foreach ($projectTypes as $projectType) {
+            ProjectType::create(['name' => $projectType]);
+        }
+
         Project::factory()->count(100)->create();
+
     }
 }

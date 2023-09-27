@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ProjectType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,11 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'           => $this->faker->name,
-            'description'    => $this->faker->paragraph(rand(2,4)),
-            'creation_year'  => strval(rand(2020,2023)),
-            'creation_month' => $this->faker->numberBetween(01,12),
-            'type'           => 'frontend'
+            'name'            => $this->faker->name,
+            'description'     => $this->faker->paragraph(rand(2,4)),
+            'creation_year'   => strval(rand(2020,2023)),
+            'creation_month'  => $this->faker->numberBetween(01,12),
+            'project_type_id' => rand(1,3)
         ];
     }
 }
