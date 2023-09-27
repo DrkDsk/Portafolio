@@ -10,10 +10,15 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'creation_year', 'creation_month'];
+    protected $fillable = ['name', 'description', 'creation_year', 'creation_month', 'project_type_id'];
 
     public function projectImages() : HasMany
     {
         return $this->hasMany(ProjectImage::class);
+    }
+
+    public function technologyProjects(): HasMany
+    {
+        return $this->hasMany(TechnologyProject::class);
     }
 }

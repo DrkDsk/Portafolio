@@ -22,7 +22,9 @@ class StoreProjectRequest extends FormRequest
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
             'creation_year' => ['required', 'integer'],
-            'creation_month' => ['required', 'integer']
+            'creation_month' => ['required', 'integer'],
+            'technologies'   => ['required'],
+            'type' => ['required']
         ];
     }
 }

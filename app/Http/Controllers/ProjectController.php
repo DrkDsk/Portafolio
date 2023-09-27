@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProjectRequest;
-use App\Http\Resources\ProjectResource;
 use App\Repository\ProjectRepository;
-use Illuminate\Support\Facades\Auth;
+use App\Repository\TechnologyProjectRepository;
 use Inertia\Response;
 use Inertia\Inertia;
+use Illuminate\Http\RedirectResponse;
 
 class ProjectController extends Controller
 {
-    public function __construct(private readonly ProjectRepository $projectRepository)
+    public function __construct(
+        private readonly ProjectRepository $projectRepository,
+        private readonly TechnologyProjectRepository $technologyProjectRepository)
     {
     }
 
@@ -31,10 +33,12 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function store(StoreProjectRequest $request): ProjectResource
+    public function store(StoreProjectRequest $request): RedirectResponse
     {
+        $technologies = $request->get('technologies');
         $project = $this->projectRepository->store($request->validated());
+        $this->technologyProjectRepository->saveTechnologiesProject($project, $technologies);
 
-        return (new ProjectResource($project));
+        return redirect()->route('home');
     }
 }
