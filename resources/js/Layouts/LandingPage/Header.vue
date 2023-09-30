@@ -22,8 +22,8 @@ import { Link } from '@inertiajs/vue3';
                 <a  class="rounded-xl text-sky-600 px-4 py-2" href="#projects">
                     Proyectos
                 </a>
-                <Link class="rounded-xl text-sky-600 px-4 py-2" :href='route("home")'>
-                    Servicios
+                <Link class="rounded-xl text-sky-600 px-4 py-2" href="#skills">
+                    Habilidades
                 </Link>
                 <Link class="rounded-xl text-sky-600 px-4 py-2" :href='route("home")'>
                     Contacto

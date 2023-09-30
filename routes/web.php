@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\CVController;
+use App\Http\Controllers\TechnologiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,15 @@ Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
             'store'  => 'admin.cv.store'
         ]);
     });
+
+    Route::resource('technologies', TechnologiesController::class)->only(['index','create', 'store', 'edit', 'update'])
+    ->names([
+        'index'  => 'admin.technologies.index',
+        'create' => 'admin.technologies.create',
+        'store'  => 'admin.technologies.store',
+        'edit'   => 'admin.technologies.edit',
+        'update' => 'admin.technologies.update'
+    ]);
 });
 
 Route::get('download', [CVController::class, 'download'])->name('cv.download');

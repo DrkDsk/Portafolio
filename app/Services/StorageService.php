@@ -3,10 +3,8 @@
 namespace App\Services;
 
 use App\Models\Project;
-
-use Illuminate\Http\Client\Response;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class StorageService
 {
@@ -58,4 +56,33 @@ class StorageService
             dd($e->getMessage());
         }
     }
+
+    public function storeImageTechnology(string $path_image_technology)
+    {
+        $image = request()->image;
+        $fileName = $image->getClientOriginalName();
+        return $image->storeAs($path_image_technology, $fileName, ['disk' => 'public']);
+    }
+
+    public function updateTechnologyImage(Technology $technology)
+    {
+        if (request()->hasFile('image')) {
+            $newImageSaved = $this->storeImageTechnology(Technology::PATH_IMAGE_TECHNOLOGY);
+
+            if ($technology->path) {
+                $this->delete($technology->path);
+            }
+
+            $technology->update(['path' => $newImageSaved]);
+        }
+    }
+
+    public function delete(string $imagePath): void
+    {
+        if (Storage::disk('public')->exists($imagePath)) {
+            Storage::disk('public')->delete($imagePath);
+        }
+    }
+
+
 }
