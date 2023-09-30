@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\CVController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,23 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
-    Route::resource('projects', AdminProjectController::class)->only(['index','store', 'create']);
+    Route::resource('projects', AdminProjectController::class)->only(['index','store', 'create'])
+    ->names([
+        'index'  => 'admin.projects.index',
+        'store'  => 'admin.projects.store',
+        'create' => 'admin.projects.create'
+    ]);
+
+    Route::prefix('cv')->group(function () {
+        Route::resource('/', CVController::class)->only(['index', 'create', 'store'])->names([
+            'index'  => 'admin.cv.index',
+            'create' => 'admin.cv.create',
+            'store'  => 'admin.cv.store'
+        ]);
+    });
 });
+
+Route::get('download', [CVController::class, 'download'])->name('cv.download');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

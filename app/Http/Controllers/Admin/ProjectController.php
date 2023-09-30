@@ -23,14 +23,14 @@ class ProjectController extends Controller
 
     public function index() : Response
     {
-        return Inertia::render('Project/Admin/Index', [
+        return Inertia::render('Admin/Project/Index', [
             'projects' => $this->projectRepository->getProjects()
         ]);
     }
 
     public function create(): Response
     {
-        return Inertia::render('Project/Admin/Create', [
+        return Inertia::render('Admin/Project/Create', [
             'technologies'    => $this->projectRepository->getTechnologies(),
             'typesOfProjects' => $this->projectRepository->getTypesOfProject()
         ]);
@@ -43,6 +43,6 @@ class ProjectController extends Controller
         $this->technologyProjectRepository->saveTechnologiesProject($project, $technologies);
         $this->storageService->storeImagesProject($project,ProjectImage::PATH_IMAGE_PROJECT);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('admin.projects.index');
     }
 }

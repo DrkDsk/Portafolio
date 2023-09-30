@@ -15,7 +15,7 @@ class ProjectController extends Controller
 
     public function index(): Response
     {
-        return Inertia::render('Project/Index', [
+        return Inertia::render('Home', [
             'myInfo'  => $this->projectRepository->myInfo(),
             'projects' => $this->projectRepository->getProjects()
         ]);

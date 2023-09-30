@@ -45,8 +45,8 @@ const submitForm = () => {
 <template>
     <Header>
         <div class="font-sans w-full min-h-screen justify-center flex items-center h-full top-0 backdrop-filter backdrop-blur-lg">
-            <div class="px-6 p-2 bg-white relative justify-center items-center m-5 w-full h-1/3 sm:h-1/3 md:w-1/3 md:h-1/3 lg:w-1/2 lg:mx-5 lg:h-1/3 rounded-3xl filter drop-shadow-2xl">
-                <div class="mt-3  sm:mt-5">
+            <div class="px-6 p-2 bg-white relative justify-center items-center m-5 w-full h-1/3 sm:h-1/3 md:w-1/3 md:h-1/3 lg:w-1/2 lg:mx-5 lg:h-1/3 rounded-3xl shadow-md border">
+                <div class="mt-3 sm:mt-5">
                     <h1 class="text-xl text-gray-600 tracking-wider text-sm sm:text-md font-black">
                         Registrar proyecto
                     </h1>
@@ -95,7 +95,7 @@ const submitForm = () => {
                         <input type="file" @input="formProject.cover = $event.target.files[0]">
 
                         <div class="justify-center flex-col items-end mt-2 sm:mt-8 flex p-4">
-                            <button class="bg-blue-600 text-gray-100 rounded-md h-8 sm:h-auto sm:rounded-lg w-20 sm:w-52 p-1 text-lg sm:text-md sm:p-3">
+                            <button class="bg-blue-600 text-gray-100 rounded-md text-lg text-md py-1.5 px-8">
                                 Registrar
                             </button>
                         </div>

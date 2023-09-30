@@ -16,12 +16,12 @@ import { Link } from '@inertiajs/vue3';
                 <Link class="rounded-xl bg-blue-600 px-4 py-2" :href='route("home")'>
                     Home
                 </Link>
+                <Link class="rounded-xl text-sky-600 px-4 py-2" href="#aboutme">
+                    Acerca de mí
+                </Link>
                 <a  class="rounded-xl text-sky-600 px-4 py-2" href="#projects">
                     Proyectos
                 </a>
-                <Link class="rounded-xl text-sky-600 px-4 py-2" :href='route("home")'>
-                    Acerca de mí
-                </Link>
                 <Link class="rounded-xl text-sky-600 px-4 py-2" :href='route("home")'>
                     Servicios
                 </Link>

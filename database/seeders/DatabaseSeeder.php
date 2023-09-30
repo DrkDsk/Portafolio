@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
             ProjectType::create(['name' => $projectType]);
         }
 
-        Project::factory()->count(100)->create();
-
+        Project::factory()->count(10)->create();
     }
 }

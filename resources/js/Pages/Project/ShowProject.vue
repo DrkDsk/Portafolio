@@ -15,7 +15,11 @@ const cover = props.project.project_images[0]?.fullImagePath ?? "/assets/img/def
                 <p class="text-black text-2xl font-bold">{{project.name}}</p>
                 <p class="text-black font-thin text-md capitalize">{{project.project_type.name}}</p>
                 <p class="text-black font-medium text-md">{{project.description}}</p>
-                <a v-if="project.github_link" :href="project.github_link" target="_blank" class="text-md text-blue-500 font-semibold underline">ver código</a>
+
+                <div class="flex flex-row items-center gap-2 mt-2" v-if="project.github_link">
+                    <div><img src="/assets/social_networks/github-mark.png" width="30" alt=""></div>
+                    <a :href="project.github_link" target="_blank" class="text-md text-blue-500 font-semibold underline">ver código</a>
+                </div>
             </div>
         </div>
     </div>
