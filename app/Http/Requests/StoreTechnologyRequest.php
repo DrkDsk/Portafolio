@@ -23,6 +23,8 @@ class StoreTechnologyRequest extends FormRequest
     {
         return [
             'name'  => ['required'],
+            'start_experience' => ['required'],
+            'finish_experience' => ['required'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:3000']
         ];
     }

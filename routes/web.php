@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\TechnologiesController;
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\CVController;
-use App\Http\Controllers\TechnologiesController;
 
 /*
 |--------------------------------------------------------------------------

@@ -5,7 +5,9 @@ import {useForm} from "@inertiajs/vue3";
 
 let technologyForm = useForm({
     name : null,
-    image: null
+    image: null,
+    start_experience: null,
+    finish_experience: null
 })
 
 const submitForm = () => {
@@ -29,9 +31,21 @@ const submitForm = () => {
                         <input v-model="technologyForm.name" type="text" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" />
 
                         <label for="cover" class="text-gray-700 mt-1 mt-5 mb-1">Portada</label>
-                        <input type="file" @input="technologyForm.image = $event.target.files[0]">
+                        <input class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="file" @input="technologyForm.image = $event.target.files[0]">
 
-                        <div class="justify-center flex-col items-end mt-2 sm:mt-8 flex p-4">
+                        <div class="flex flex-row justify-between gap-4">
+                            <div class="flex flex-col">
+                                <label for="start_experience" class="text-gray-700 mt-1 mt-5 mb-1">Fecha de inicio de experiencia</label>
+                                <input v-model="technologyForm.start_experience" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="date" placeholder="Ingresa una fecha">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="finish_experience" class="text-gray-700 mt-1 mt-5 mb-1">Fecha de fin de experiencia</label>
+                                <input v-model="technologyForm.finish_experience" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="date" placeholder="Ingresa una fecha">
+                            </div>
+                        </div>
+
+                        <div class="justify-center flex-col items-end mt-2 sm:mt-8 flex mb-2">
                             <button class="bg-blue-600 text-gray-100 rounded-md text-lg text-md py-1.5 px-8">
                                 Registrar
                             </button>

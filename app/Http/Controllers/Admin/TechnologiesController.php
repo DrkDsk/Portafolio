@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
@@ -44,7 +45,7 @@ class TechnologiesController extends Controller
     public function store(StoreTechnologyRequest $request): RedirectResponse
     {
         $path = $this->storageService->storeImageTechnology(Technology::PATH_IMAGE_TECHNOLOGY);
-        $technology = $this->technologyRepository->create($request->get('name'), $path);
+        $this->technologyRepository->create($request->validated(), $path);
 
         return redirect()->route('admin.technologies.index');
     }

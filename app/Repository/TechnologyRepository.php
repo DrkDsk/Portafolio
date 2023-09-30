@@ -11,11 +11,13 @@ class TechnologyRepository
         return Technology::orderBy('created_at', 'DESC')->get();
     }
 
-    public function create(string $name, string $path)
+    public function create(array $data, string $path)
     {
         return Technology::create([
-            'name' => $name,
-            'path' => $path
+            'name' => $data['name'],
+            'path' => $path,
+            'start_experience'  => $data['start_experience'],
+            'finish_experience' => $data['finish_experience'],
         ]);
     }
 }

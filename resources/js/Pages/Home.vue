@@ -4,9 +4,11 @@ import Header from "@/Layouts/LandingPage/Header.vue";
 import Landing from "@/Layouts/LandingPage/Landing.vue";
 import LandingProjects from "@/Pages/Project/LandingProjects.vue";
 import AboutMe from "@/Pages/AboutMe.vue";
+import LandingTechnologies from "@/Pages/Technologies/LandingTechnologies.vue";
 
 let props = defineProps({
     projects : Object,
+    technologies: Object,
     myInfo  : Object
 })
 
@@ -18,6 +20,8 @@ let props = defineProps({
         <AboutMe></AboutMe>
         <div class="my-8"></div>
         <LandingProjects title="Proyectos Destacados" :projects="projects"></LandingProjects>
+        <div class="my-8"></div>
+        <LandingTechnologies :technologies="technologies"></LandingTechnologies>
     </Header>
 </template>
 

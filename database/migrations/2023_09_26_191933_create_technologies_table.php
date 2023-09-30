@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('path')->nullable();
+            $table->date('start_experience');
+            $table->date('finish_experience');
             $table->timestamps();
         });
     }
