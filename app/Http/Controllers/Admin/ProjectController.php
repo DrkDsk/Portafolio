@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnologyProjectRepository;
@@ -26,6 +27,11 @@ class ProjectController extends Controller
         return Inertia::render('Admin/Project/Index', [
             'projects' => $this->projectRepository->getProjects()
         ]);
+    }
+
+    public function show(Project $project)
+    {
+        return $project;
     }
 
     public function create(): Response

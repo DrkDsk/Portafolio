@@ -11,7 +11,7 @@ let props = defineProps({
 
 <template>
     <Header>
-        <LandingProjects id="projects" :projects="projects"></LandingProjects>
+        <LandingProjects route-to="admin.projects.show" id="projects" :projects="projects"></LandingProjects>
     </Header>
 </template>
 

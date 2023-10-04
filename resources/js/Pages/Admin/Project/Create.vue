@@ -34,7 +34,7 @@ for (let i= firstYearOfCreationProject; i<=new Date().getFullYear(); i++) {
 readonly(props.technologies.map((technology) => optionsTechnologies.push({ value: technology.id, label: technology.name })));
 
 const submitForm = () => {
-    formProject.post(route('projects.store'))
+    formProject.post(route('admin.projects.store'))
 }
 
 

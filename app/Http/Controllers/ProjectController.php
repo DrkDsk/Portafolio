@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnologyRepository;
 use Inertia\Response;
@@ -21,6 +22,14 @@ class ProjectController extends Controller
             'myInfo'  => $this->projectRepository->myInfo(),
             'projects' => $this->projectRepository->getProjects(),
             'technologies' => $this->technologyRepository->getAll(),
+        ]);
+    }
+
+    public function show(Project $project): Response
+    {
+        return Inertia::render('Project/ShowProject', [
+            'project' => $project,
+            'images'  => $project->projectImages
         ]);
     }
 }

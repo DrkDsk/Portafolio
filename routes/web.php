@@ -19,16 +19,19 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::get('/', [ProjectController::class, 'index'])->name('home');
+Route::get('project/{project}', [ProjectController::class, 'show'])->name('project.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
-    Route::resource('projects', AdminProjectController::class)->only(['index','store', 'create'])
+    Route::resource('projects', AdminProjectController::class)->only(['index', 'show', 'store', 'create'])
     ->names([
         'index'  => 'admin.projects.index',
+        'show'   => 'admin.projects.show',
         'store'  => 'admin.projects.store',
         'create' => 'admin.projects.create'
     ]);
