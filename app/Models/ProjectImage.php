@@ -10,9 +10,9 @@ class ProjectImage extends Model
     const PATH_IMAGE_PROJECT = '/images/projects';
     use HasFactory;
     protected $fillable = ['project_id', 'path'];
-    protected $appends = ['fullImagePath'];
+    protected $appends = ['imagePath'];
 
-    public function getFullImagePathAttribute(): string
+    public function getImagePathAttribute(): string
     {
         return asset("storage/" . $this->path);
     }

@@ -6,17 +6,19 @@ let props = defineProps({
     project : Object,
     images: Object,
     type: Object,
-    technologiesProject: Object
+    technologiesProject: Object,
+    markdownContent : null
 })
 
 const arrayOfImages = props.images
+
 </script>
 
 <template>
     <div class="mt-8">
         <Carousel :wrap-around="true">
             <Slide v-for="slide in arrayOfImages" :key="slide">
-                <img alt="" class="img-height md:w-11/12 object-fill" loading="lazy" :src="slide.fullImagePath">
+                <img alt="" class="img-height md:w-11/12 object-fill" loading="lazy" :src="slide.imagePath">
             </Slide>
 
             <template #addons>
@@ -24,7 +26,7 @@ const arrayOfImages = props.images
             </template>
         </Carousel>
     </div>
-    <div class="flex flex-col w-1/2 bg-white my-10 ml-16 p-4 shadow-md border gap-2">
+    <div class="flex flex-col w-11/12 bg-white my-10 ml-16 p-4 shadow-md border gap-2">
         <p class="text-gray-700 text-2xl font-extrabold">
             {{project.name}}
         </p>
@@ -44,6 +46,9 @@ const arrayOfImages = props.images
                     {{index+1}}.- {{technologyProject.technology.name}}
                 </li>
             </ol>
+        </div>
+        <div class="w-1/2 mx-auto">
+            <div v-html="markdownContent"></div>
         </div>
     </div>
 </template>

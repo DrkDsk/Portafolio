@@ -6,7 +6,7 @@ let props = defineProps({
     technology: Object
 })
 
-const cover = props.technology?.fullImagePath ?? "/assets/img/default.jpg"
+const cover = props.technology?.imagePath ?? "/assets/img/default.jpg"
 
 </script>
 
