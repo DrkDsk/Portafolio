@@ -28,8 +28,10 @@ class ProjectController extends Controller
     public function show(Project $project): Response
     {
         return Inertia::render('Project/ShowProject', [
-            'project' => $project,
-            'images'  => $project->projectImages
+            'project'      => $project,
+            'images'       => $project->projectImages,
+            'type'         => $project->projectType,
+            'technologiesProject' => $project->technologyProjects()->with('technology')->get()
         ]);
     }
 }
