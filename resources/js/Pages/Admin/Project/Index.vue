@@ -4,7 +4,9 @@ import Header from "@/Layouts/LandingPage/Header.vue";
 import LandingProjects from "@/Pages/Project/LandingProjects.vue";
 
 let props = defineProps({
-    projects : Object
+    projects : {
+        type: Object
+    }
 })
 
 </script>

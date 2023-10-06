@@ -44,7 +44,7 @@ class TechnologiesController extends Controller
 
     public function store(StoreTechnologyRequest $request): RedirectResponse
     {
-        $path = $this->storageService->storeImageTechnology(Technology::PATH_IMAGE_TECHNOLOGY);
+        $path = $this->storageService->storeFile(Technology::PATH_IMAGE_TECHNOLOGY, $request->file('image'));
         $this->technologyRepository->create($request->validated(), $path);
 
         return redirect()->route('admin.technologies.index');

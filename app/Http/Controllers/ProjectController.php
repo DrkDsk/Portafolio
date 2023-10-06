@@ -28,7 +28,11 @@ class ProjectController extends Controller
 
     public function show(Project $project): Response
     {
-        $readme = Storage::disk('public')->get($project->readme);
+        $readme = null;
+        if ($project->readme && Storage::exists('public/'. $project->readme)) {
+            $readme = Storage::disk('public')->get($project->readme);
+        }
+
         return Inertia::render('Project/ShowProject', [
             'project'      => $project,
             'images'       => $project->projectImages,

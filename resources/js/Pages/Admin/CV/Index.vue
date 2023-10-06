@@ -3,17 +3,13 @@ import Header from "@/Layouts/LandingPage/Header.vue";
 import {downloadFile} from '@/Services/FileService.js'
 
 let props = defineProps({
-    cvPath : null
+    cvPath : {
+        type: String
+    }
 })
 
 const downloadCv = () => {
-    axios({
-        url : route('cv.download'),
-        method: 'get',
-        responseType: 'blob'
-    }).then((response) => {
-        downloadFile(response.data)
-    })
+    downloadFile()
 }
 
 </script>

@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
             'type' => ['required'],
             'images' => ['nullable','array'],
             'images.*' => ['nullable','image','mimes:jpeg,png,jpg','max:3000'],
-            'cover' => ['required','image','mimes:jpeg,png,jpg','max:3000']
+            'cover' => ['required','image','mimes:jpeg,png,jpg','max:3000'],
+            'readme' => ['nullable', 'file', 'max:3000']
         ];
     }
 }

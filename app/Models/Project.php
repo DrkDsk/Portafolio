@@ -12,6 +12,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'github_link', 'readme', 'creation_year', 'creation_month', 'project_type_id'];
+    const README_PATH = "readmes";
 
     public function projectImages() : HasMany
     {

@@ -39,9 +39,6 @@ class CVController extends Controller
 
     public function download(): BinaryFileResponse
     {
-        $file = public_path(). "/storage/personal/cv.pdf";
-        $headers = ['Content-Type' => 'application/pdf'];
-
-        return response()->download($file, 'filename.pdf', $headers);
+        return $this->storageService->downloadCV();
     }
 }

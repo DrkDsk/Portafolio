@@ -2,8 +2,12 @@
 import {Link} from "@inertiajs/vue3";
 
 let props = defineProps({
-    project: Object,
-    routeTo: String
+    project: {
+        type: Object
+    },
+    routeTo: {
+        type: String
+    }
 })
 
 const cover = props.project.project_images[0]?.imagePath ?? "/assets/img/default.jpg"

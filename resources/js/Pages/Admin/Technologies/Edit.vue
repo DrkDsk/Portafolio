@@ -5,7 +5,9 @@ import {router} from "@inertiajs/vue3";
 import {reactive} from "vue";
 
 let props = defineProps({
-    technology : Object
+    technology : {
+        type: Object
+    }
 })
 
 let technologyForm = reactive({

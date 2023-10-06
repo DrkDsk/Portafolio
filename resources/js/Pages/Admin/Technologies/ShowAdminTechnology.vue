@@ -3,7 +3,9 @@
 import { Link } from '@inertiajs/vue3';
 
 let props = defineProps({
-    technology: Object
+    technology: {
+        type: Object
+    }
 })
 
 const cover = props.technology?.imagePath ?? "/assets/img/default.jpg"
