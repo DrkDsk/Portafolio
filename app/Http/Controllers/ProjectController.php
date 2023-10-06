@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnologyRepository;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Response;
 use Inertia\Inertia;
 
@@ -27,11 +28,17 @@ class ProjectController extends Controller
 
     public function show(Project $project): Response
     {
+        $readme = null;
+        if ($project->readme && Storage::exists('public/'. $project->readme)) {
+            $readme = Storage::disk('public')->get($project->readme);
+        }
+
         return Inertia::render('Project/ShowProject', [
             'project'      => $project,
             'images'       => $project->projectImages,
             'type'         => $project->projectType,
-            'technologiesProject' => $project->technologyProjects()->with('technology')->get()
+            'technologiesProject' => $project->technologyProjects()->with('technology')->get(),
+            'markdownContent' => $readme
         ]);
     }
 }

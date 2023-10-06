@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
-use App\Models\ProjectImage;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnologyProjectRepository;
 use App\Services\StorageService;
@@ -47,7 +46,9 @@ class ProjectController extends Controller
         $technologies = $request->get('technologies');
         $project = $this->projectRepository->store($request->validated());
         $this->technologyProjectRepository->saveTechnologiesProject($project, $technologies);
-        $this->storageService->storeImagesProject($project,ProjectImage::PATH_IMAGE_PROJECT);
+        $this->storageService->storeImagesProject($project);
+        $pathReadme = $this->storageService->storeFile(Project::README_PATH, $request->file('readme'));
+        $project->update(['readme' => $pathReadme]);
 
         return redirect()->route('admin.projects.index');
     }

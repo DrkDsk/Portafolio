@@ -7,8 +7,12 @@ import Header from "@/Layouts/LandingPage/Header.vue";
 import { monthsArray, firstYearOfCreationProject }  from '@/Constants.js'
 
 let props = defineProps({
-    technologies: Object,
-    typesOfProjects: Object
+    technologies: {
+        type: Object
+    },
+    typesOfProjects: {
+        type: Object
+    }
 })
 
 let formProject = useForm({
@@ -20,7 +24,8 @@ let formProject = useForm({
     creation_month : 0,
     type: null,
     images: null,
-    cover: null
+    cover: null,
+    readme: null
 })
 
 const optionsTechnologies = [];
@@ -93,6 +98,9 @@ const submitForm = () => {
 
                         <label for="cover" class="text-gray-700 mt-1 mt-5 mb-1">Portada</label>
                         <input type="file" @input="formProject.cover = $event.target.files[0]">
+
+                        <label for="readme" class="text-gray-700 mt-1 mt-5 mb-1">Readme</label>
+                        <input type="file" @input="formProject.readme = $event.target.files[0]">
 
                         <div class="justify-center flex-col items-end mt-2 sm:mt-8 flex p-4">
                             <button class="bg-blue-600 text-gray-100 rounded-md text-lg text-md py-1.5 px-8">

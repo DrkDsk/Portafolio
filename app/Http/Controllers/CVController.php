@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCVRequest;
 use App\Services\StorageService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CVController extends Controller
 {
@@ -41,13 +39,6 @@ class CVController extends Controller
 
     public function download(): BinaryFileResponse
     {
-        /*$fileCvPath = Storage::path('public/personal/cv.pdf');
-        $headers = array('Content-type:application/pdf');
-        */
-
-        $file = public_path(). "/storage/personal/cv.pdf";
-        $headers = ['Content-Type' => 'application/pdf'];
-
-        return response()->download($file, 'filename.pdf', $headers);
+        return $this->storageService->downloadCV();
     }
 }

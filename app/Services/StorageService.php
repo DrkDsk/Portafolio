@@ -3,23 +3,30 @@
 namespace App\Services;
 
 use App\Models\Project;
+use App\Models\ProjectImage;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class StorageService
 {
-    public function storeImagesProject(Project $project, string $path_image_project): void
+    public function storeImagesProject(Project $project): void
     {
         $images = request()->images;
         $cover = request()->cover;
         $images ? array_unshift($images, $cover) : $images[] = $cover;
         foreach ($images as $image) {
             $filename =  $image->getClientOriginalName();
-            $imagePath = $image->storeAs($path_image_project, $filename, ['disk' => 'public']);
+            $imagePath = $image->storeAs(ProjectImage::PATH_IMAGE_PROJECT, $filename, ['disk' => 'public']);
             $project->projectImages()->create(['project_id' => $project->id, 'path' => $imagePath]);
         }
     }
 
+    public function storeFile(string $path_readme, $file)
+    {
+        $fileName = $file->getClientOriginalName();
+        return $file->storeAs($path_readme, $fileName, ['disk' => 'public']);
+    }
 
     public function storeCv() : string
     {
@@ -45,34 +52,18 @@ class StorageService
         return null;
     }
 
-    public function downloadCV()
+    public function downloadCV(): BinaryFileResponse
     {
-        try {
-            $fileCvPath = Storage::path('public/personal/cv.pdf');
-            $headers = array('Content-type:application/pdf');
+        $file = public_path(). "/storage/personal/cv.pdf";
+        $headers = ['Content-Type' => 'application/pdf'];
 
-            return response()->download($fileCvPath, 'cv.pdf');
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
+        return response()->download($file, 'filename.pdf', $headers);
     }
 
-    public function storeImageTechnology(string $path_image_technology)
-    {
-        $image = request()->image;
-        $fileName = $image->getClientOriginalName();
-        return $image->storeAs($path_image_technology, $fileName, ['disk' => 'public']);
-    }
-
-    public function updateTechnologyImage(Technology $technology)
+    public function updateTechnologyImage(Technology $technology): void
     {
         if (request()->hasFile('image')) {
-            $newImageSaved = $this->storeImageTechnology(Technology::PATH_IMAGE_TECHNOLOGY);
-
-            if ($technology->path) {
-                $this->delete($technology->path);
-            }
-
+            $newImageSaved = $this->storeFile(Technology::PATH_IMAGE_TECHNOLOGY, request()->image);
             $technology->update(['path' => $newImageSaved]);
         }
     }
@@ -83,6 +74,5 @@ class StorageService
             Storage::disk('public')->delete($imagePath);
         }
     }
-
 
 }

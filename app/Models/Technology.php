@@ -12,11 +12,11 @@ class Technology extends Model
     protected $table = 'technologies';
     const PATH_IMAGE_TECHNOLOGY = '/images/technologies';
 
-    protected $appends = ['fullImagePath', 'startExperience'];
+    protected $appends = ['imagePath', 'startExperience'];
 
     protected $fillable = ['name', 'path', 'start_experience', 'finish_experience'];
 
-    public function getFullImagePathAttribute(): string
+    public function getImagePathAttribute(): string
     {
         return asset("storage/" . $this->attributes['path']);
     }

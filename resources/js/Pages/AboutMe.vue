@@ -2,13 +2,7 @@
 import {downloadFile} from "@/Services/FileService.js";
 
 const downloadCv = () => {
-    axios({
-        url : route('cv.download'),
-        method: 'get',
-        responseType: 'blob'
-    }).then((response) => {
-        downloadFile(response.data)
-    })
+    downloadFile()
 }
 </script>
 

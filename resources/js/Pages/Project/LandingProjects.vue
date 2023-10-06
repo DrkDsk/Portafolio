@@ -3,9 +3,15 @@
 import CardProject from "@/Pages/Project/CardProject.vue";
 
 let props = defineProps({
-    projects : Object,
-    title: String,
-    routeTo : String
+    projects: {
+        type: Object
+    },
+    title: {
+        type: String
+    },
+    routeTo: {
+        type: String
+    }
 })
 
 </script>
