@@ -75,4 +75,13 @@ class StorageService
         }
     }
 
+    public function getReadmeProject(Project $project): ?string
+    {
+        $readme = null;
+        if ($project->readme && Storage::exists('public/'. $project->readme)) {
+            $readme = Storage::disk('public')->get($project->readme);
+        }
+        return $readme;
+    }
+
 }

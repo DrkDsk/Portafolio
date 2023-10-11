@@ -15,9 +15,9 @@ use Inertia\Response;
 class ProjectController extends Controller
 {
     public function __construct(
-        private readonly ProjectRepository $projectRepository,
-        private readonly TechnologyProjectRepository $technologyProjectRepository,
-        private readonly  StorageService $storageService)
+        protected ProjectRepository $projectRepository,
+        protected TechnologyProjectRepository $technologyProjectRepository,
+        protected  StorageService $storageService)
     {
     }
 
@@ -28,9 +28,18 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show(Project $project)
+    public function show(Project $project): Response
     {
-        return $project;
+        $readme = $this->storageService->getReadmeProject($project);
+
+        return Inertia::render('Project/ShowProject', [
+            'project'      => $project,
+            'images'       => $project->projectImages,
+            'type'         => $project->projectType,
+            'technologiesProject' => $project->technologyProjects()->with('technology')->get(),
+            'markdownContent' => $readme,
+            'showCreateProjectButton' => true
+        ]);
     }
 
     public function create(): Response

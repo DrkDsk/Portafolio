@@ -1,5 +1,5 @@
 <script setup>
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 import {downloadFile} from '@/Services/FileService.js'
 
 let props = defineProps({

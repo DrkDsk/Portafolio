@@ -1,6 +1,6 @@
 <script setup>
 
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 import {useForm} from "@inertiajs/vue3";
 
 let technologyForm = useForm({

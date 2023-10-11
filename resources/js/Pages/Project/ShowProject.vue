@@ -1,7 +1,9 @@
 <script setup>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
+import {computed} from "vue";
+import CreateButton from "@/Layouts/Buttons/CreateButton.vue";
 
 let props = defineProps({
     project: {
@@ -16,16 +18,31 @@ let props = defineProps({
     technologiesProject: {
         type: Object
     },
-    markdownContent : null
+    showMarkdown:{
+        type: Boolean
+    },
+    markdownContent: {
+        type: null
+    },
+    showCreateProjectButton: {
+        type: Boolean
+    }
 })
 
 const arrayOfImages = props.images
+const monthFormat = computed( () =>  {
+    const month = props.project.creation_month
+    return month < 10 ? `0${month}` : `${month}`;
+})
 
 </script>
 
 <template>
     <Header>
         <div class="mt-8">
+            <div class="flex flex-row justify-end mr-8" v-if="showCreateProjectButton">
+               <CreateButton :link="route('admin.projects.create')" title="Crear proyecto"></CreateButton>
+            </div>
             <Carousel :wrap-around="true">
                 <Slide v-for="slide in arrayOfImages" :key="slide">
                     <img alt="" class="img-height md:w-11/12 object-fill" loading="lazy" :src="slide.imagePath">
@@ -37,12 +54,23 @@ const arrayOfImages = props.images
             </Carousel>
         </div>
         <div class="flex flex-col w-11/12 bg-white my-10 ml-16 p-4 shadow-md border gap-2">
-            <p class="text-gray-700 text-2xl font-extrabold">
+            <p class="text-gray-700 text-4xl font-extrabold">
                 {{project.name}}
             </p>
+
+            <div class="flex flex-row gap-4">
+                <p class="text-gray-700 text-lg font-extrabold capitalize">
+                    FECHA DE INICIO:
+                </p>
+                <p class="text-gray-600 text-lg font-extrabold capitalize italic">
+                    {{monthFormat}}/{{project.creation_year}}
+                </p>
+            </div>
+
             <p class="text-gray-700 text-lg font-extrabold capitalize">
                 {{project.description}}
             </p>
+
             <div class="flex flex-row items-center gap-2 mt-2" v-if="project.github_link">
                 <div><img src="/assets/social_networks/github-mark.png" width="30" alt=""></div>
                 <a :href="project.github_link" target="_blank" class="underline text-blue-500 text-xl font-extrabold">
@@ -58,7 +86,7 @@ const arrayOfImages = props.images
                     </div>
                 </div>
             </div>
-            <div class="w-1/2 mx-auto">
+            <div class="w-1/2 mx-auto" v-if="showMarkdown">
                 <div v-html="markdownContent"></div>
             </div>
         </div>

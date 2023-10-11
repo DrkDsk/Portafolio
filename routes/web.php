@@ -21,8 +21,7 @@ use Inertia\Inertia;
 
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
-Route::get('project/{project}', [ProjectController::class, 'sh
-ow'])->name('project.show');
+Route::get('projects/{project}', [ProjectController::class, 'show'])->name('project.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
