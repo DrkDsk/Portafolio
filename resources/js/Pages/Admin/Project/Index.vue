@@ -1,6 +1,6 @@
 <script setup>
 
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 import LandingProjects from "@/Pages/Project/LandingProjects.vue";
 
 let props = defineProps({

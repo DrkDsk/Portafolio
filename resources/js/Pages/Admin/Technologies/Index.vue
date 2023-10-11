@@ -1,7 +1,7 @@
 <script setup>
 
 import ShowAdminTechnology from "@/Pages/Admin/Technologies/ShowAdminTechnology.vue";
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 
 defineProps({
     technologies: {

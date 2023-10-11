@@ -2,6 +2,8 @@
 
 return [
 
+    'own_email' => env('OWN_CONTACT_EMAIL', 'joseaph.1998@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Default Mailer

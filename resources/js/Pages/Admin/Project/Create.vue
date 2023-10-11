@@ -3,7 +3,7 @@
 import {useForm} from "@inertiajs/vue3";
 import {readonly} from "vue";
 import Multiselect from '@vueform/multiselect';
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 import { monthsArray, firstYearOfCreationProject }  from '@/Constants.js'
 
 let props = defineProps({

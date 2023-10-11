@@ -1,10 +1,11 @@
 <script setup>
 
-import Header from "@/Layouts/LandingPage/Header.vue";
+import Header from "@/Layouts/Header.vue";
 import Landing from "@/Layouts/LandingPage/Landing.vue";
 import LandingProjects from "@/Pages/Project/LandingProjects.vue";
 import AboutMe from "@/Pages/AboutMe.vue";
 import LandingTechnologies from "@/Pages/Technologies/LandingTechnologies.vue";
+import Contact from "@/Pages/Contact.vue";
 
 let props = defineProps({
     projects : Object,
@@ -22,6 +23,7 @@ let props = defineProps({
         <LandingProjects route-to="project.show" title="Proyectos Destacados" :projects="projects"></LandingProjects>
         <div class="my-8"></div>
         <LandingTechnologies :technologies="technologies"></LandingTechnologies>
+        <Contact></Contact>
     </Header>
 </template>
 
