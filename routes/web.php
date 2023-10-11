@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\TechnologiesController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,9 @@ use Inertia\Inertia;
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('projects/{project}', [ProjectController::class, 'show'])->name('project.show');
+Route::get('download', [CVController::class, 'download'])->name('cv.download');
+Route::post('contact', [ContactController::class, 'contact'])->name('contact.email');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -53,8 +57,6 @@ Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
         'update' => 'admin.technologies.update'
     ]);
 });
-
-Route::get('download', [CVController::class, 'download'])->name('cv.download');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
