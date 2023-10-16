@@ -59,13 +59,13 @@ class TechnologiesController extends Controller
         return redirect()->route('admin.technologies.index');
     }
 
-    public function destroy(Technology $technology): RedirectResponse
+    public function destroy(Technology $technology): bool
     {
         if ($technology->path) {
             $this->storageService->delete($technology->path);
         }
         $technology->delete();
 
-        return redirect()->route('admin.technologies.index');
+        return true;
     }
 }

@@ -1,6 +1,5 @@
-<script setup>
-
-import {Link} from "@inertiajs/vue3";
+<script setup lang="ts">
+import {DeleteTechnology} from "../../Events/DeleteTechnology";
 
 let props = defineProps({
     url:{
@@ -8,10 +7,16 @@ let props = defineProps({
     }
 })
 
+
+const handleDelete = () => {
+    let deleteTechnology = new DeleteTechnology()
+    deleteTechnology.delete(props.url)
+}
+
 </script>
 
 <template>
-    <Link :href="url" class="text-white bg-red-500 px-3 py-1.5 rounded-md">Eliminar</Link>
+    <button @click="handleDelete" class="text-white bg-red-500 px-3 py-1.5 rounded-md">Eliminar</button>
 </template>
 
 <style scoped>
