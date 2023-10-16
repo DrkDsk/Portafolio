@@ -24,8 +24,12 @@ class StorageService
 
     public function storeFile(string $path_readme, $file)
     {
-        $fileName = $file->getClientOriginalName();
-        return $file->storeAs($path_readme, $fileName, ['disk' => 'public']);
+        if ($file) {
+            $fileName = $file->getClientOriginalName();
+            return $file->storeAs($path_readme, $fileName, ['disk' => 'public']);
+        }
+
+        return null;
     }
 
     public function storeCv() : string

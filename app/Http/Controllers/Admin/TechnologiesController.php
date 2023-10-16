@@ -26,7 +26,8 @@ class TechnologiesController extends Controller
         $technologies = $this->technologyRepository->getAll();
 
         return Inertia::render('Admin/Technologies/Index', [
-            'technologies' => $technologies
+            'technologies' => $technologies,
+            'showCreateTechnologyButton' => true
         ]);
     }
 
@@ -54,6 +55,16 @@ class TechnologiesController extends Controller
     {
         $this->storageService->updateTechnologyImage($technology);
         $technology->update(['name' => $request->get('name')]);
+
+        return redirect()->route('admin.technologies.index');
+    }
+
+    public function destroy(Technology $technology): RedirectResponse
+    {
+        if ($technology->path) {
+            $this->storageService->delete($technology->path);
+        }
+        $technology->delete();
 
         return redirect()->route('admin.technologies.index');
     }

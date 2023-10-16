@@ -34,7 +34,7 @@ Route::get('/dashboard', function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:administrador']], function () {
     Route::resource('projects', AdminProjectController::class)->only(['index', 'show', 'store', 'create']);
     Route::resource('cv', CVController::class)->only(['index', 'create', 'store']);
-    Route::resource('technologies', TechnologiesController::class)->only(['index','create', 'store', 'edit', 'update']);
+    Route::resource('technologies', TechnologiesController::class)->except(['show']);
 });
 
 Route::middleware('auth')->group(function () {
