@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@vueform/multiselect": "^2.6.2",
+        "sweetalert2": "^11.7.32",
         "vue3-carousel": "^0.3.1"
     }
 }
