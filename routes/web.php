@@ -31,31 +31,10 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('admin')->middleware(['role:administrador'])->group(function () {
-    Route::resource('projects', AdminProjectController::class)->only(['index', 'show', 'store', 'create'])
-    ->names([
-        'index'  => 'admin.projects.index',
-        'show'   => 'admin.projects.show',
-        'store'  => 'admin.projects.store',
-        'create' => 'admin.projects.create'
-    ]);
-
-    Route::prefix('cv')->group(function () {
-        Route::resource('/', CVController::class)->only(['index', 'create', 'store'])->names([
-            'index'  => 'admin.cv.index',
-            'create' => 'admin.cv.create',
-            'store'  => 'admin.cv.store'
-        ]);
-    });
-
-    Route::resource('technologies', TechnologiesController::class)->only(['index','create', 'store', 'edit', 'update'])
-    ->names([
-        'index'  => 'admin.technologies.index',
-        'create' => 'admin.technologies.create',
-        'store'  => 'admin.technologies.store',
-        'edit'   => 'admin.technologies.edit',
-        'update' => 'admin.technologies.update'
-    ]);
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:administrador']], function () {
+    Route::resource('projects', AdminProjectController::class)->only(['index', 'show', 'store', 'create']);
+    Route::resource('cv', CVController::class)->only(['index', 'create', 'store']);
+    Route::resource('technologies', TechnologiesController::class)->only(['index','create', 'store', 'edit', 'update']);
 });
 
 Route::middleware('auth')->group(function () {
