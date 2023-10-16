@@ -24,6 +24,7 @@ class ProjectController extends Controller
     public function index() : Response
     {
         return Inertia::render('Admin/Project/Index', [
+            'showCreateProjectButton' => true,
             'projects' => $this->projectRepository->getProjects()
         ]);
     }
@@ -37,8 +38,7 @@ class ProjectController extends Controller
             'images'       => $project->projectImages,
             'type'         => $project->projectType,
             'technologiesProject' => $project->technologyProjects()->with('technology')->get(),
-            'markdownContent' => $readme,
-            'showCreateProjectButton' => true
+            'markdownContent' => $readme
         ]);
     }
 

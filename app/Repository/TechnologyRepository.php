@@ -11,7 +11,7 @@ class TechnologyRepository
         return Technology::orderBy('created_at', 'DESC')->get();
     }
 
-    public function create(array $data, string $path)
+    public function create(array $data, string|null $path)
     {
         return Technology::create([
             'name' => $data['name'],

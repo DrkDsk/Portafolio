@@ -3,7 +3,6 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import Header from "@/Layouts/Header.vue";
 import {computed} from "vue";
-import CreateButton from "@/Layouts/Buttons/CreateButton.vue";
 
 let props = defineProps({
     project: {
@@ -23,9 +22,6 @@ let props = defineProps({
     },
     markdownContent: {
         type: null
-    },
-    showCreateProjectButton: {
-        type: Boolean
     }
 })
 
@@ -40,9 +36,6 @@ const monthFormat = computed( () =>  {
 <template>
     <Header>
         <div class="mt-8">
-            <div class="flex flex-row justify-end mr-8" v-if="showCreateProjectButton">
-               <CreateButton :link="route('admin.projects.create')" title="Crear proyecto"></CreateButton>
-            </div>
             <Carousel :wrap-around="true">
                 <Slide v-for="slide in arrayOfImages" :key="slide">
                     <img alt="" class="img-height md:w-11/12 object-fill" loading="lazy" :src="slide.imagePath">
