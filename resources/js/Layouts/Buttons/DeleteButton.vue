@@ -1,16 +1,29 @@
 <script setup lang="ts">
-import {DeleteTechnology} from "../../Events/DeleteTechnology";
+
+import { DeleteTechnology } from "@/Classes/DeleteTechnology";
+import { DeleteService} from "@/Services/DeleteService";
+import {DeleteProject} from "@/Classes/DeleteProject";
 
 let props = defineProps({
     url:{
+        type: String
+    },
+    deleteType: {
         type: String
     }
 })
 
 
 const handleDelete = () => {
-    let deleteTechnology = new DeleteTechnology()
-    deleteTechnology.delete(props.url)
+
+    let deleteType = new DeleteTechnology()
+
+    if (props.deleteType == "project") {
+        deleteType = new DeleteProject()
+    }
+
+    let deleteService = new DeleteService();
+    deleteService.type(props.url, deleteType)
 }
 
 </script>

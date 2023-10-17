@@ -1,9 +1,13 @@
-import {DeleteEvent} from "../Interfaces/DeleteEvent";
+import {DeleteEvent} from "@/Interfaces/DeleteEvent.js";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-export class DeleteTechnology implements DeleteEvent {
-    delete(url) {
+export class DeleteService implements  DeleteEvent {
+    type(url: string, deleteEvent: DeleteEvent) {
+        return deleteEvent.delete(url);
+    }
+
+    delete(url: string) {
         Swal.fire({
             title: 'Estás seguro que deseas eliminarlo?',
             text: "No podrás revertir esta acción!",
@@ -31,6 +35,6 @@ export class DeleteTechnology implements DeleteEvent {
     }
 }
 
-export default {
-    DeleteTechnology
+export default  {
+    DeleteService
 }

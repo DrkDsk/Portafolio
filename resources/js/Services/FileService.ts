@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function downloadFile()  {
     axios({
         url: route('cv.download'),

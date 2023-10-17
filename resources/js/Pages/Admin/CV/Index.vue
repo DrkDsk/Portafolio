@@ -1,6 +1,6 @@
 <script setup>
 import Header from "@/Layouts/Header.vue";
-import {downloadFile} from '@/Services/FileService.js'
+import {downloadFile} from '@/Services/FileService.ts'
 
 let props = defineProps({
     cvPath : {

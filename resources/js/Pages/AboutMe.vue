@@ -1,5 +1,5 @@
 <script setup>
-import {downloadFile} from "@/Services/FileService.js";
+import {downloadFile} from "@/Services/FileService.ts";
 
 const downloadCv = () => {
     downloadFile()

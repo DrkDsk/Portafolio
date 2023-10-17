@@ -61,4 +61,16 @@ class ProjectController extends Controller
 
         return redirect()->route('admin.projects.index');
     }
+
+    public function destroy(Project $project): bool
+    {
+        collect($project->projectImages)->map(function ($image) {
+            $this->storageService->delete($image->path);
+        });
+
+        $project->delete();
+
+        return true;
+
+    }
 }
