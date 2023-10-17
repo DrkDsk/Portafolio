@@ -68,6 +68,7 @@ class ProjectController extends Controller
             $this->storageService->delete($image->path);
         });
 
+        $project->projectImages()->delete();
         $project->delete();
 
         return true;

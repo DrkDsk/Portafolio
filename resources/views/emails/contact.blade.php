@@ -1,12 +1,9 @@
-<x-mail::message>
+@component('vendor.mail.html.message',  [
+    'slot'    => $message,
+    'subcopy' => $emailFrom,
+    'name'    => $name
+])
 
-<br>Hola, soy: {{ $name }},
-    <br>{{$message}}
-    <br>Te puedes comunicar conmigo al correo: {{$emailFrom}}
+@endcomponent
 
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
-
-</x-mail::message>

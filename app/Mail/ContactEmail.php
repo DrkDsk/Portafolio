@@ -49,6 +49,15 @@ class ContactEmail extends Mailable
         );
     }
 
+    public function build(): ContactEmail
+    {
+        return $this->markdown('emails.contact', [
+            'message'      => $this->message,
+            'emailFrom' => $this->emailFrom,
+            'name'      => $this->name
+        ]);
+    }
+
     /**
      * Get the attachments for the message.
      *
