@@ -17,7 +17,7 @@ const cover = props.technology?.imagePath ?? "/assets/img/default.jpg"
     <div class="w-full rounded-md bg-white shadow-md border px-4 py-6">
         <div class="flex flex-col">
             <Link :href="route('admin.technologies.edit', technology.id)">
-                <img loading="lazy"  :src=cover alt="" class="h-96 w-full object-cover object-center">
+                <img loading="lazy" :src=cover alt="" class="h-64 w-full object-center">
             </Link>
             <div class="gap-1 mt-3 flex flex-row justify-between">
                 <p class="text-black text-2xl font-bold capitalize">{{technology.name}}</p>

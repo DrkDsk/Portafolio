@@ -13,7 +13,9 @@ defineProps({
         <div class="container mx-auto px-8 py-8 lg:py-40 relative flex flex-col lg:flex-row items-center">
             <div class="lg:w-1/2 flex flex-col items-center lg:items-start">
                 <h1 class="text-center lg:text-left text-3xl sm:text-5xl text-blue-700 leading-tight mb-4 font-bold">Hola, soy Alfredo Palacios. <strong class="text-blue-500 font-black text-3xl sm:text-4xl block">Conoce un poco más de lo que hago.</strong></h1>
-                <p class="text-center lg:text-left sm:text-lg text-gray-600 lg:pr-40 leading-relaxed">Soy un desarrollador full stack. Actualmente estoy trabajando en el desarrollo de tecnologías as desarrollador full stack .</p>
+                <p class="text-center lg:text-left sm:text-lg text-gray-600 lg:pr-40 leading-relaxed">
+                    Soy un desarrollador full stack. Actualmente estoy trabajando en el
+                    desarrollo de tecnologías como desarrollador full stack .</p>
                 <div class="flex flex-row gap-4 mt-2">
                     <div>
                         <a :href="myInfo.github" target="_blank"><img src="/assets/social_networks/github-mark.png" width="40"></a>

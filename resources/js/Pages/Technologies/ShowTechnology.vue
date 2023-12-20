@@ -12,7 +12,7 @@ const cover = props.technology?.imagePath ?? "/assets/img/default.jpg"
     <div class="rounded-md bg-white shadow-md border">
         <div class="flex flex-col text-gray-600 text-xl pb-4">
             <div class="pb-4">
-                <img loading="lazy" :src=cover alt="" class="h-80 w-full object-cover object-right">
+                <img loading="lazy" :src=cover alt="" class="h-64 w-full object-center">
             </div>
             <div>
                 <p class="font-bold capitalize px-4 py-1">{{technology.name}}</p>
