@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/foo', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
     return "done";
 });
 
