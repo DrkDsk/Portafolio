@@ -12,7 +12,7 @@ const toggleMenu = () => {
 
 <template>
     <nav class="w-full py-3 sticky top-0 z-50 bg-white">
-        <div class="w-full flex items-center justify-start mt-0 px-6 py-2">
+        <div class="w-full flex items-center justify-start font-semibold text-lg mt-0 px-6 py-2">
             <label
                 for="menu-toggle"
                 class="cursor-pointer md:hidden block"
@@ -73,7 +73,7 @@ const toggleMenu = () => {
         </div>
         <aside
             :class="{ 'hidden': !isOpen }"
-            class="fixed z-10 md:hidden flex-col w-64 h-screen px-5 overflow-y-auto bg-white border border-gray-200 rounded-md"
+            class="fixed z-10 md:hidden flex-col w-64 h-screen px-5 font-semibold text-lg overflow-y-auto bg-white border border-gray-200 rounded-md"
         >
             <div class="flex flex-col justify-between flex-1">
                 <nav class="-mx-3">

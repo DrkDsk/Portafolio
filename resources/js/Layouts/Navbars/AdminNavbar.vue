@@ -13,7 +13,7 @@ const toggleMenu = () => {
 
 <template>
     <nav class="w-full py-3 sticky top-0 z-50 bg-white">
-        <div class="w-full flex items-center justify-start mt-0 px-6 py-2">
+        <div class="w-full flex justify-between flex-row items-center mt-0 px-6 py-2">
             <label
                 for="menu-toggle"
                 class="cursor-pointer md:hidden block"
@@ -32,12 +32,9 @@ const toggleMenu = () => {
             </label>
             <input class="hidden" type="checkbox" id="menu-toggle" />
 
-            <div
-                class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1"
-                id="menu"
-            >
+            <div class="hidden md:flex md:items-center font-semibold text-lg order-3 md:order-1" id="menu">
                 <nav>
-                    <ul class="md:flex items-center justify-between font-semibold text-lg pt-4 md:pt-0">
+                    <ul class="md:flex items-center  pt-4 md:pt-0">
                         <li>
                             <Link class="rounded-xl text-sky-600 px-4 py-2" :href="route('dashboard')">
                                 Dashboard
@@ -58,12 +55,15 @@ const toggleMenu = () => {
                                 Ver Cv
                             </Link>
                         </li>
-                        <li>
-                            <div class="hidden sm:flex sm:items-center">
-                                <!-- Settings Dropdown -->
-                                <div class="relative">
-                                    <Dropdown align="right" width="48">
-                                        <template #trigger>
+                    </ul>
+                </nav>
+            </div>
+            <div class="hidden md:flex md:items-center order-3 md:order-1">
+                <div class="hidden sm:flex sm:items-center">
+                    <!-- Settings Dropdown -->
+                    <div class="relative">
+                        <Dropdown align="right" width="48">
+                            <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button
                                                 type="button"
@@ -86,24 +86,22 @@ const toggleMenu = () => {
                                                 </svg>
                                             </button>
                                         </span>
-                                        </template>
+                            </template>
 
-                                        <template #content>
-                                            <Link class="text-gray-600 px-4 py-2 text-sm" :href="route('logout')" method="post" as="button">
-                                                Cerrar Sesión
-                                            </Link >
-                                        </template>
-                                    </Dropdown>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
+                            <template #content>
+                                <Link class="text-gray-600 px-4 py-2 text-sm" :href="route('logout')" method="post" as="button">
+                                    Cerrar Sesión
+                                </Link >
+                            </template>
+                        </Dropdown>
+                    </div>
+                </div>
             </div>
+
         </div>
         <aside
             :class="{ 'hidden': !isOpen }"
-            class="fixed z-10 md:hidden flex-col w-64 h-screen px-5 overflow-y-auto bg-white border border-gray-200 rounded-md"
+            class="fixed z-10 md:hidden font-semibold text-lg flex-col w-64 h-screen px-5 overflow-y-auto bg-white border border-gray-200 rounded-md"
         >
             <div class="flex flex-col justify-between flex-1">
                 <nav class="-mx-3">
@@ -141,6 +139,12 @@ const toggleMenu = () => {
                             <Link class="rounded-xl text-sky-600 px-4 py-2" href="#contact">
                                 Contacto
                             </Link>
+                        </li>
+
+                        <li class="my-3">
+                            <Link class="rounded-xl text-sky-600 px-4 py-2" :href="route('logout')" method="post" as="button">
+                                Cerrar Sesión
+                            </Link >
                         </li>
                     </ul>
                 </nav>

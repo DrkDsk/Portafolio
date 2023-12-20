@@ -23,7 +23,7 @@ let props = defineProps({
         <LandingProjects route-to="project.show" title="Proyectos Destacados" :projects="projects"></LandingProjects>
         <div class="my-8"></div>
         <LandingTechnologies :technologies="technologies"></LandingTechnologies>
-        <Contact></Contact>
+        <Contact :my-info="myInfo"></Contact>
     </Header>
 </template>
 
