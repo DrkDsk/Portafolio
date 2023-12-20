@@ -22,11 +22,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $projectTypes = ['frontend', 'backend', 'full stack'];
-        foreach ($projectTypes as $projectType) {
-            ProjectType::create(['name' => $projectType]);
-        }
-
         Project::factory()->count(10)->create();
     }
 }
