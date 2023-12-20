@@ -22,7 +22,7 @@ defineProps({
                 <CreateButton :link="route('admin.technologies.create')" title="Crear Tecnología"></CreateButton>
             </div>
             <p class="text-4xl text-sky-800 text-center mb-8">Tecnologías</p>
-            <div class="grid grid-cols-2 w-11/12 mx-auto gap-6 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto gap-6 px-4">
                 <ShowAdminTechnology v-for="technology in technologies" v-bind:id="technology.id" :technology="technology"></ShowAdminTechnology>
             </div>
         </div>

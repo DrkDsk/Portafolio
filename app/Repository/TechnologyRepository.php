@@ -16,8 +16,7 @@ class TechnologyRepository
         return Technology::create([
             'name' => $data['name'],
             'path' => $path,
-            'start_experience'  => $data['start_experience'],
-            'finish_experience' => $data['finish_experience'],
+            'years_experience' => $data['years_experience']
         ]);
     }
 }

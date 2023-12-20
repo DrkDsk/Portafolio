@@ -18,7 +18,7 @@ const cover = props.technology?.imagePath ?? "/assets/img/default.jpg"
                 <p class="font-bold capitalize px-4 py-1">{{technology.name}}</p>
             </div>
             <div class="flex flex-row">
-                <p class="font-bold px-4 py-1">Experiencia: <span class="text-lg"> {{technology.startExperience}}</span></p>
+                <p class="font-bold px-4 py-1">Experiencia: <span class="text-lg"> {{technology.years_experience}} años</span></p>
             </div>
         </div>
     </div>

@@ -22,15 +22,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $technologies = ['PHP', 'Vue', 'Laravel', 'Angular', 'Tailwind css'];
-        foreach ($technologies as $technology) {
-            Technology::create([
-                'name' => $technology,
-                'start_experience'  => fake()->dateTimeBetween(),
-                'finish_experience' => fake()->dateTimeBetween()
-            ]);
-        }
-
         $projectTypes = ['frontend', 'backend', 'full stack'];
         foreach ($projectTypes as $projectType) {
             ProjectType::create(['name' => $projectType]);

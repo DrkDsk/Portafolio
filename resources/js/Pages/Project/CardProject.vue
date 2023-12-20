@@ -17,7 +17,7 @@ const cover = props.project.project_images[0]?.imagePath ?? "/assets/img/default
 
 <template>
     <div class="rounded-md bg-white shadow-md border px-4 py-6">
-        <Link class="flex flex-col">
+        <div class="flex flex-col">
             <Link :href="route(routeTo, props.project.id)"> <img loading="lazy" :src=cover alt="" class="h-96 w-full object-cover object-center"> </Link>
             <div class="gap-1 mt-3">
                 <p class="text-black text-2xl font-bold">{{project.name}}</p>
@@ -33,7 +33,7 @@ const cover = props.project.project_images[0]?.imagePath ?? "/assets/img/default
                     <DeleteButton delete-type="project" :url="route('admin.projects.destroy', project.id)"></DeleteButton>
                 </div>
             </div>
-        </Link>
+        </div>
     </div>
 </template>
 

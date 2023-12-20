@@ -46,7 +46,7 @@ const monthFormat = computed( () =>  {
                 </template>
             </Carousel>
         </div>
-        <div class="flex flex-col w-11/12 bg-white my-10 ml-16 p-4 shadow-md border gap-2">
+        <div class="flex flex-col w-10/12 md:w-11/12 bg-white my-10 ml-16 p-4 shadow-md border gap-2">
             <p class="text-gray-700 text-4xl font-extrabold">
                 {{project.name}}
             </p>

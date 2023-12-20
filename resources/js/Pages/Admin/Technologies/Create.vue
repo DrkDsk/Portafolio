@@ -6,8 +6,7 @@ import {useForm} from "@inertiajs/vue3";
 let technologyForm = useForm({
     name : null,
     image: null,
-    start_experience: null,
-    finish_experience: null
+    years_experience: null
 })
 
 const submitForm = () => {
@@ -35,13 +34,8 @@ const submitForm = () => {
 
                         <div class="flex flex-row justify-between gap-4">
                             <div class="flex flex-col">
-                                <label for="start_experience" class="text-gray-700 mt-1 mt-5 mb-1">Fecha de inicio de experiencia</label>
-                                <input v-model="technologyForm.start_experience" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="date" placeholder="Ingresa una fecha">
-                            </div>
-
-                            <div class="flex flex-col">
-                                <label for="finish_experience" class="text-gray-700 mt-1 mt-5 mb-1">Fecha de fin de experiencia</label>
-                                <input v-model="technologyForm.finish_experience" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="date" placeholder="Ingresa una fecha">
+                                <label for="years_experience" class="text-gray-700 mt-1 mt-5 mb-1">Años de experiencia</label>
+                                <input v-model="technologyForm.years_experience" class="w-full rounded-md border-b-2 border-gray-300 focus:border-blue-300 outline-none" type="number" placeholder="Ingresa los años de experiencia">
                             </div>
                         </div>
 
