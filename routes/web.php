@@ -43,4 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/foo', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+});
+
 require __DIR__.'/auth.php';
