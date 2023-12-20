@@ -24,6 +24,7 @@ class ProjectController extends Controller
             'myInfo'  => $this->projectRepository->myInfo(),
             'projects' => $this->projectRepository->getProjects(),
             'technologies' => $this->technologyRepository->getAll(),
+            'cvPath' => $this->storageService->getCVPath()
         ]);
     }
 

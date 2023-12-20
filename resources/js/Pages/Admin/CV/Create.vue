@@ -7,7 +7,7 @@ let formCv = useForm({
 })
 
 const submitForm = () => {
-    formCv.post(route('cv.store'))
+    formCv.post(route('admin.cv.store'))
 }
 
 </script>

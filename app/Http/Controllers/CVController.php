@@ -19,7 +19,6 @@ class CVController extends Controller
     public function index(): Response
     {
         $cvPath = $this->storageService->getCVPath();
-
         return Inertia::render('Admin/CV/Index', [
             'cvPath' => $cvPath
         ]);

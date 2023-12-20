@@ -1,6 +1,10 @@
 <script setup>
 import {downloadFile} from "@/Services/FileService.ts";
 
+const props = defineProps({
+    cvPath : String
+})
+
 const downloadCv = () => {
     downloadFile()
 }
@@ -21,7 +25,7 @@ const downloadCv = () => {
                    aprender cosas nuevas todos los días de ambos mundos, tanto en el frontend como en el backend.
                </p>
            </div>
-           <div class="p-4 flex-row justify-center md:justify-end flex md:ml-auto">
+           <div v-if="cvPath" class="p-4 flex-row justify-center md:justify-end flex md:ml-auto">
                <button @click="downloadCv" class="text-white rounded-lg bg-gray-500 px-3 py-2 flex flex-row gap-2">
                    Descargar CV
                    <img src="/assets/svg/buttons/download-button.svg" alt="" width="25">

@@ -10,7 +10,8 @@ import Contact from "@/Pages/Contact.vue";
 let props = defineProps({
     projects : Object,
     technologies: Object,
-    myInfo  : Object
+    myInfo  : Object,
+    cvPath: String
 })
 
 </script>
@@ -18,7 +19,7 @@ let props = defineProps({
 <template>
     <Header>
         <Landing :my-info="myInfo"></Landing>
-        <AboutMe></AboutMe>
+        <AboutMe :cv-path="cvPath"></AboutMe>
         <div class="my-8"></div>
         <LandingProjects route-to="project.show" title="Proyectos Destacados" :projects="projects"></LandingProjects>
         <div class="my-8"></div>

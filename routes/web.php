@@ -26,7 +26,6 @@ Route::get('projects/{project}', [ProjectController::class, 'show'])->name('proj
 Route::get('download', [CVController::class, 'download'])->name('cv.download');
 Route::post('contact', [ContactController::class, 'contact'])->name('contact.email');
 
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,10 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/foo', function () {
-    return "done";
 });
 
 require __DIR__.'/auth.php';
