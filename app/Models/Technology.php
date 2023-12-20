@@ -18,7 +18,7 @@ class Technology extends Model
 
     public function getImagePathAttribute(): string
     {
-        return asset("storage/" . $this->attributes['path']);
+        return asset("public/storage/" . $this->attributes['path']);
     }
 
     public function getStartExperienceAttribute(): string
