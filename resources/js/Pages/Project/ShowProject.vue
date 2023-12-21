@@ -25,7 +25,7 @@ let props = defineProps({
     }
 })
 
-const arrayOfImages = props.images
+const arrayOfImages = props.images.slice(1)
 const monthFormat = computed( () =>  {
     const month = props.project.creation_month
     return month < 10 ? `0${month}` : `${month}`;

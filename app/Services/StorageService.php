@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\ProjectImage;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class StorageService
@@ -17,7 +18,7 @@ class StorageService
         $images ? array_unshift($images, $cover) : $images[] = $cover;
         foreach ($images as $image) {
             $extension = $image->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
+            $filename = Str::random(14) . '.' . $extension;
             $imagePath = $image->storeAs(ProjectImage::PATH_IMAGE_PROJECT, $filename, ['disk' => 'public']);
             $project->projectImages()->create(['project_id' => $project->id, 'path' => $imagePath]);
         }
