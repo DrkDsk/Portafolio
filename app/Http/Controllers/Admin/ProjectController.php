@@ -11,6 +11,7 @@ use App\Services\StorageService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
+use phpDocumentor\Reflection\Types\False_;
 
 class ProjectController extends Controller
 {
@@ -62,16 +63,20 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index');
     }
 
-    public function destroy(Project $project): bool
+    public function destroy(Project $project): bool|string
     {
-        collect($project->projectImages)->map(function ($image) {
-            $this->storageService->delete($image->path);
-        });
+        try {
+            collect($project->projectImages)->map(function ($image) {
+                $this->storageService->delete($image->path);
+            });
 
-        $project->projectImages()->delete();
-        $project->delete();
+            $project->technologyProjects()->delete();
+            $project->projectImages()->delete();
+            $project->delete();
 
-        return true;
-
+            return true;
+        } catch (\Throwable $throwable) {
+            return false;
+        }
     }
 }

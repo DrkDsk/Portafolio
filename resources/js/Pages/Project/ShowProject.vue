@@ -60,7 +60,7 @@ const monthFormat = computed( () =>  {
                 </p>
             </div>
 
-            <p class="text-gray-700 text-lg font-extrabold capitalize">
+            <p class="text-gray-700 text-lg font-extrabold text-justify pr-8 my-2">
                 {{project.description}}
             </p>
 
