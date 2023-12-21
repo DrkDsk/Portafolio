@@ -72,8 +72,8 @@ const monthFormat = computed( () =>  {
             </div>
             <div class="mt-3 flex flex-col gap-2">
                 <p class="font-bold text-2xl text-neutral-800">Técnologias:</p>
-                <div class="flex flex-row gap-4 justify-between">
-                    <div class="flex flex-col gap-2" v-for="(technologyProject, index) in technologiesProject" v-bind:id="index">
+                <div class="flex flex-row gap-4">
+                    <div class="flex flex-col gap-2 mr-4" v-for="(technologyProject, index) in technologiesProject" v-bind:id="index">
                         <p class="text-neutral-600 font-bold text-2xl mx-auto">{{technologyProject.technology.name}}</p>
                         <img alt="" width="250" class="object-cover object-center" :src="technologyProject.technology.imagePath">
                     </div>

@@ -16,7 +16,8 @@ class StorageService
         $cover = request()->cover;
         $images ? array_unshift($images, $cover) : $images[] = $cover;
         foreach ($images as $image) {
-            $filename =  $image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
             $imagePath = $image->storeAs(ProjectImage::PATH_IMAGE_PROJECT, $filename, ['disk' => 'public']);
             $project->projectImages()->create(['project_id' => $project->id, 'path' => $imagePath]);
         }
