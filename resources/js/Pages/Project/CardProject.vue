@@ -1,6 +1,7 @@
 <script setup>
-import {Link} from "@inertiajs/vue3";
+import {Link, usePage} from "@inertiajs/vue3";
 import DeleteButton from "@/Layouts/Buttons/DeleteButton.vue";
+import {computed} from "vue";
 
 let props = defineProps({
     project: {
@@ -12,6 +13,8 @@ let props = defineProps({
 })
 
 const cover = props.project.project_images[0]?.imagePath ?? "/assets/img/default.jpg"
+const page = usePage()
+const isAdmin = computed(() => page.props.auth.isAdmin)
 
 </script>
 
@@ -30,7 +33,7 @@ const cover = props.project.project_images[0]?.imagePath ?? "/assets/img/default
                 </div>
 
                 <div class="flex flex-row justify-end">
-                    <DeleteButton delete-type="project" :url="route('admin.projects.destroy', project.id)"></DeleteButton>
+                    <DeleteButton v-if="isAdmin" delete-type="project" :url="route('admin.projects.destroy', project.id)"></DeleteButton>
                 </div>
             </div>
         </div>
